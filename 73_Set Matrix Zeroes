@@ -1,0 +1,45 @@
+class Solution {
+    public void setZeroes(int[][] matrix) {
+       int m  = matrix.length; // number of rows present
+       int n = matrix[0].length; // number of columns
+       // array to maintain results
+       ArrayList<Integer> m_array = new ArrayList<>();
+       ArrayList<Integer> n_array = new ArrayList<>();
+       //int[][] tempMatrix = matrix.clone();
+       int[][] tempMatrix = new int[m][n];
+       for(int i = 0; i< m; i++){
+           for(int j = 0; j< n; j++)
+           {
+              tempMatrix[i][j]= matrix[i][j];
+           }
+       }
+       System.out.print("________");
+       if(1 <= m && n <= 200){
+           for(int i = 0; i < m ; i++){ // row
+               for (int j = 0; j< n; j++){ // column
+               System.out.print(tempMatrix[i][j]);
+                   if(tempMatrix[i][j] == 0)
+                    {
+                       //System.out.println(i + "  " + j);    
+                       // row as 0        
+                       if(!m_array.contains(i)){
+                        for(int k = 0; k < n ; k++){
+                        matrix[i][k] = 0;
+                        }
+                        m_array.add(i);
+                       }
+                       // column as 0
+                       if(!n_array.contains(j)){
+                        for(int k = 0; k < m ; k++){
+                            matrix[k][j] = 0;
+                        }
+                            n_array.add(j);
+                       }                                   
+                    }
+               }
+            }
+            System.out.println(m_array);
+            System.out.println(n_array); 
+       }  
+    }
+}
