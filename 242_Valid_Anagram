@@ -1,0 +1,26 @@
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        HashMap<String, Integer> hashMap1 = new HashMap<>();
+
+        hashMap = convertMap(s);
+        hashMap1 = convertMap(t);
+        
+        boolean areEqual = hashMap1.equals(hashMap);
+        return areEqual;
+    }
+
+    public HashMap<String, Integer> convertMap(String str){
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        for(char ch: str.toCharArray()){
+            int value = 1;
+            if(hashMap.containsKey(String.valueOf(ch))){
+               value = hashMap.get(String.valueOf(ch));
+               value = value + 1;      
+            } 
+            hashMap.put(String.valueOf(ch), value);
+        }
+        return hashMap;
+    }
+    
+}
