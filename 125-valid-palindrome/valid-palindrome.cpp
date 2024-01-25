@@ -2,26 +2,24 @@
 using namespace std;
 
 class Solution {
-public:
-    string keepLetters(const string& s){
-        string result;
-        for(char c : s){
-            if(isalnum(c)){
-                result+=c;
+public:     
+    bool chkPal(string &str){
+        int l = 0, r = str.length() -1;
+        while(l < r){
+            if(!isalnum(str[l])){
+                l++;
+            } else if(!isalnum(str[r])){
+                r--;
+            } else if(tolower(str[l]) != tolower(str[r])){
+                return false;
+            } else {
+                l++;
+                r--;
             }
-        }
-        return result;
-    }
-    bool chkPal(int i, string &str){
-        if(i >= str.length() / 2){return true;}
-        if(tolower(str[i]) != tolower(str[str.length()-i-1])){
-            return false;
-        }
-        return chkPal(i+1, str);
+        } return true;
     }
 
     bool isPalindrome(string s) {
-        string str = keepLetters(s);
-        return chkPal(0, str);
+        return chkPal(s);
     }
 };
