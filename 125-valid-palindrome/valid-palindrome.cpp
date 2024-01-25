@@ -25,4 +25,3 @@ public:
         return chkPal(0, str);
     }
 };
-
