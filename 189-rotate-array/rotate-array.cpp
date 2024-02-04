@@ -11,7 +11,6 @@ public:
                 while(k > n){
                     k = (k-n);
                 }
-                //cout << k << endl;
             }
             vector<int> tmp;
             for(int i = 0 ; i < (n-k); i++){
